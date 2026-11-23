@@ -1,346 +1,377 @@
 ```html
 <!DOCTYPE html>
-<html lang="fa" dir="rtl" class="scroll-smooth">
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>فروشگاه دیجیتال نکسیفای (Nexify) | استارز تلگرام، پریمیوم و یوسی پابجی با قیمت افغانی</title>
-  <meta name="description" content="خرید سریع و مطمئن استارز تلگرام، تلگرام پریمیوم و یوسی پابجی موبایل در افغانستان با قیمت افغانی و ثبت سفارش آسان از طریق واتساپ و تلگرام." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نکسیفای | خرید استارز تلگرام، تلگرام پریمیوم و یوسی پابجی در افغانستان با قیمت افغانی</title>
+  <meta name="description" content="نکسیفای | خرید استارز تلگرام، تلگرام پریمیوم و یوسی پابجی در افغانستان با قیمت افغانی، تحویل فوری بدون نیاز به رمز عبور و ثبت سفارش آسان در واتساپ و تلگرام.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ===== متغیرها و تنظیمات پایه ===== */
+    :root {
+      --bg: #080d1a;
+      --card: #11192c;
+      --card-2: #17223b;
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --cyan: #38bdf8;
+      --emerald: #22c55e;
+      --purple: #a855f7;
+      --gold: #f59e0b;
+      --danger: #fb7185;
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 80% 0%, rgba(56,189,248,0.12), transparent 40%),
+                  radial-gradient(circle at 10% 30%, rgba(168,85,247,0.10), transparent 45%), var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font-family: inherit; }
+    .container { width: 100%; max-width: 1060px; margin: 0 auto; padding: 0 16px; }
+    .ltr { direction: ltr; unicode-bidi: embed; }
+    .ic { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
 
-  <!-- Google Font: Vazirmatn for crisp Persian/Dari typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    /* ===== هدر ثابت ===== */
+    header {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(8, 13, 26, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .brand-icon {
+      width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(56,189,248,0.22), rgba(168,85,247,0.22));
+      border: 1px solid rgba(56,189,248,0.4); color: var(--cyan); flex-shrink: 0;
+    }
+    .brand-title { font-size: 15px; font-weight: 900; line-height: 1.2; white-space: nowrap; }
+    .brand-title span { color: var(--cyan); }
+    .brand-sub { display: block; font-size: 11px; color: var(--muted); }
+    .nav-links { display: none; gap: 6px; }
+    .nav-links a { padding: 8px 12px; border-radius: 10px; font-size: 13px; font-weight: 700; color: var(--muted); }
+    .nav-links a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+    .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      padding: 11px 18px; border-radius: 13px; border: 0; font-size: 14px; font-weight: 800;
+      cursor: pointer; transition: transform 0.15s, opacity 0.15s;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-wa { background: linear-gradient(135deg, #4ade80, var(--emerald)); color: #052e16; }
+    .btn-cyan { background: linear-gradient(135deg, #7dd3fc, var(--cyan)); color: #082f49; }
+    .btn-dark { background: var(--card-2); color: var(--text); border: 1px solid var(--border); }
+    .btn-sm { padding: 9px 12px; font-size: 12px; border-radius: 11px; }
+    .menu-btn {
+      width: 40px; height: 40px; border-radius: 11px; border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05); color: #fff; display: grid; place-items: center; cursor: pointer;
+    }
+    .mobile-menu { display: none; flex-direction: column; gap: 6px; padding: 10px 0 14px; border-top: 1px solid var(--border); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { padding: 10px 12px; border-radius: 10px; font-size: 14px; font-weight: 700; background: rgba(255,255,255,0.03); }
 
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    /* ===== بخش معرفی (Hero) ===== */
+    .hero { text-align: center; padding: 38px 0 30px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 99px;
+      background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.28);
+      color: #bae6fd; font-size: 12px; font-weight: 700; margin-bottom: 16px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); }
+    .hero h1 { font-size: clamp(24px, 6vw, 42px); font-weight: 900; line-height: 1.38; margin-bottom: 12px; }
+    .hero h1 .c-cyan { color: var(--cyan); }
+    .hero h1 .c-purp { color: #c084fc; }
+    .hero h1 .c-gold { color: var(--gold); }
+    .hero p { max-width: 600px; margin: 0 auto 22px; color: var(--muted); font-size: 14px; }
+    .hero-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 18px; }
+    .hero-cta .btn { min-width: 175px; }
+    .wa-notice {
+      display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px;
+      padding: 10px 16px; border-radius: 14px; background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.32); font-size: 12.5px; color: #bbf7d0;
+    }
+    .wa-notice strong { color: #fff; font-size: 14px; letter-spacing: 0.5px; }
 
-  <!-- Tailwind Custom Theme & Design Tokens -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Vazirmatn', 'system-ui', '-apple-system', 'sans-serif'],
-          },
-          colors: {
-            nexBg: '#0b1120',
-            nexSurface: '#11192c',
-            tgBlue: '#29b6f6',
-            pubgGold: '#f59e0b',
-            waGreen: '#22c55e',
-          },
-          boxShadow: {
-            'tg-glow': '0 0 28px -6px rgba(41, 182, 246, 0.45)',
-            'prem-glow': '0 0 28px -6px rgba(192, 132, 252, 0.45)',
-            'gold-glow': '0 0 28px -6px rgba(245, 158, 11, 0.45)',
-            'wa-glow': '0 0 28px -6px rgba(34, 197, 94, 0.5)',
-          },
-          keyframes: {
-            fadeUp: {
-              '0%': { opacity: '0', transform: 'translateY(14px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            floatSlow: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-5px)' },
-            },
-          },
-          animation: {
-            'fade-up': 'fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-            'float-slow': 'floatSlow 3.5s ease-in-out infinite',
-          },
-        },
-      },
-    };
-  </script>
+    /* ===== بخش‌ها و عناوین ===== */
+    section { padding: 28px 0; scroll-margin-top: 72px; }
+    .sec-head { text-align: center; margin-bottom: 22px; }
+    .sec-head h2 { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+    .sec-head p { font-size: 13px; color: var(--muted); }
+
+    /* ===== فیلتر و کارت‌های محصول ===== */
+    .tabs {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
+      background: var(--card); border: 1px solid var(--border); padding: 8px;
+      border-radius: var(--radius); max-width: 680px; margin: 0 auto 22px;
+    }
+    .tab {
+      padding: 11px 8px; border-radius: 11px; border: 0; background: transparent;
+      color: var(--muted); font-size: 13px; font-weight: 800; cursor: pointer; transition: 0.2s;
+    }
+    .tab.active { background: #fff; color: #0f172a; }
+    .tab.active[data-cat="stars"] { background: var(--cyan); color: #082f49; }
+    .tab.active[data-cat="premium"] { background: linear-gradient(135deg, #c084fc, #ec4899); color: #fff; }
+    .tab.active[data-cat="pubg"] { background: var(--gold); color: #451a03; }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    .card {
+      position: relative; background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .card-badge {
+      position: absolute; top: -10px; left: 16px; padding: 3px 10px; border-radius: 99px;
+      font-size: 11px; font-weight: 900; background: var(--gold); color: #451a03;
+    }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .cat-tag { font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 9px; background: rgba(255,255,255,0.06); }
+    .card.stars .cat-tag, .card.stars .price-val { color: var(--cyan); }
+    .card.premium .cat-tag, .card.premium .price-val { color: #d8b4fe; }
+    .card.pubg .cat-tag, .card.pubg .price-val { color: #fbbf24; }
+    .card h3 { font-size: 18px; font-weight: 900; margin-bottom: 6px; }
+    .card-desc { font-size: 12.5px; color: var(--muted); margin-bottom: 14px; }
+    .price-box {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(8,13,26,0.7); border: 1px solid var(--border);
+      border-radius: 12px; padding: 10px 14px; margin-bottom: 12px;
+    }
+    .price-box span { font-size: 12px; color: var(--muted); }
+    .price-val { font-size: 18px; font-weight: 900; }
+    .card .btn { width: 100%; }
+    .card.premium .btn-order { background: linear-gradient(135deg, #c084fc, #ec4899); color: #fff; }
+    .card.pubg .btn-order { background: linear-gradient(135deg, #fcd34d, var(--gold)); color: #451a03; }
+
+    /* ===== مراحل سفارش و کارت‌های تماس ===== */
+    .steps-grid, .contact-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .step-card, .contact-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px;
+    }
+    .step-num {
+      width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
+      background: rgba(56,189,248,0.14); color: var(--cyan); font-weight: 900; margin-bottom: 10px;
+    }
+    .step-card h3 { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+    .step-card p { font-size: 13px; color: var(--muted); }
+    .contact-card { display: flex; flex-direction: column; gap: 10px; transition: border-color 0.2s; }
+    .contact-card:hover { border-color: rgba(56,189,248,0.45); }
+    .contact-row { display: flex; align-items: center; gap: 12px; }
+    .c-icon { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; flex-shrink: 0; }
+    .c-wa { background: rgba(34,197,94,0.15); color: var(--emerald); }
+    .c-tg { background: rgba(56,189,248,0.15); color: var(--cyan); }
+    .c-ch { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+    .contact-label { font-size: 12px; color: var(--muted); }
+    .contact-val { font-size: 15px; font-weight: 900; color: #fff; }
+    .contact-tag {
+      font-size: 11.5px; font-weight: 700; text-align: center; padding: 6px 10px;
+      border-radius: 9px; background: rgba(255,255,255,0.04); color: var(--muted);
+    }
+    .contact-tag.wa-only { background: rgba(34,197,94,0.12); color: #86efac; }
+
+    /* ===== فوتر با فاصله امن از پایین برای جلوگیری از تداخل با دکمه شناور ===== */
+    footer {
+      border-top: 1px solid var(--border); background: #050914;
+      padding: 24px 0 92px; text-align: center; font-size: 12px; color: var(--muted); margin-top: 16px;
+    }
+
+    /* ===== دکمه شناور کوچک واتساپ گوشه پایین چپ (بدون هم‌پوشانی) ===== */
+    .wa-float {
+      position: fixed; bottom: 16px; left: 16px; z-index: 45;
+      width: 50px; height: 50px; border-radius: 50%;
+      background: linear-gradient(135deg, #4ade80, var(--emerald)); color: #052e16;
+      display: grid; place-items: center; box-shadow: 0 8px 22px rgba(34,197,94,0.45);
+      border: 2px solid rgba(255,255,255,0.35);
+    }
+    .wa-float .ic { width: 24px; height: 24px; }
+
+    /* ===== پنجره ثبت سفارش (Modal) ===== */
+    .modal-wrap {
+      position: fixed; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center;
+      padding: 14px; background: rgba(0,0,0,0.78); backdrop-filter: blur(4px);
+    }
+    .modal-wrap.open { display: flex; }
+    .modal {
+      width: 100%; max-width: 460px; max-height: 90vh; overflow-y: auto;
+      background: #0f172a; border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 18px;
+    }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+    .modal-head h3 { font-size: 16px; font-weight: 900; }
+    .close-btn {
+      width: 34px; height: 34px; border-radius: 10px; border: 0; background: rgba(255,255,255,0.08);
+      color: #fff; font-size: 20px; line-height: 1; cursor: pointer;
+    }
+    .order-summary {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      background: var(--card); border: 1px solid var(--border); border-radius: 13px; padding: 12px 14px; margin-bottom: 14px;
+    }
+    .order-summary strong { display: block; font-size: 15px; }
+    .order-summary small { font-size: 11px; color: var(--muted); }
+    .order-price { font-size: 16px; font-weight: 900; color: var(--cyan); white-space: nowrap; }
+    .field { margin-bottom: 12px; }
+    .field label { display: block; font-size: 12.5px; font-weight: 700; margin-bottom: 6px; color: #e2e8f0; }
+    .field input, .field textarea {
+      width: 100%; padding: 11px 12px; border-radius: 11px; border: 1px solid rgba(255,255,255,0.15);
+      background: var(--bg); color: #fff; font-size: 13.5px; outline: none;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--cyan); }
+    .field textarea { resize: vertical; min-height: 64px; }
+    .err { display: none; color: var(--danger); font-size: 11.5px; font-weight: 700; margin-top: 5px; }
+    .err.show { display: block; }
+    .modal-actions { display: flex; flex-direction: column; gap: 9px; margin-top: 14px; }
+    .modal-actions .btn { width: 100%; padding: 12px; }
+
+    /* ===== پیام اعلان (Toast) ===== */
+    .toast {
+      position: fixed; bottom: 24px; right: 50%; transform: translate(50%, 20px); z-index: 80;
+      background: var(--emerald); color: #052e16; font-size: 13px; font-weight: 800;
+      padding: 10px 18px; border-radius: 12px; opacity: 0; pointer-events: none;
+      transition: 0.25s; white-space: nowrap; box-shadow: 0 10px 24px rgba(0,0,0,0.4);
+    }
+    .toast.show { opacity: 1; transform: translate(50%, 0); }
+
+    /* ===== واکنش‌گرا برای تبلت و دسکتاپ ===== */
+    @media (min-width: 640px) {
+      .tabs { grid-template-columns: repeat(4, 1fr); }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid, .contact-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .nav-links { display: flex; }
+      .menu-btn { display: none; }
+      .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
 </head>
+<body>
 
-<body class="font-sans bg-nexBg text-slate-100 antialiased selection:bg-tgBlue/30 selection:text-sky-200 overflow-x-hidden">
+  <!-- آیکون‌های SVG فشرده و قابل استفاده مجدد -->
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="ic-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.5 14.1c-.2.7-1.4 1.3-1.9 1.3-.5.1-1.1.1-1.8-.1-1.6-.5-3.6-1.7-5.1-3.5-1.1-1.3-1.7-2.6-1.7-3.6 0-1 .5-1.7.9-2.1.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.8 1.9.9 2.1.1.2.1.3 0 .5l-.4.5c-.2.2-.3.3-.1.6.5.9 1.3 1.7 2.2 2.2.3.2.5.1.7-.1l.8-1c.2-.2.4-.2.6-.1l2 1c.2.1.4.2.5.3.1.2.1.7-.1 1.3z"/></symbol>
+    <symbol id="ic-tg" viewBox="0 0 24 24"><path d="M21.9 4.7a1.5 1.5 0 0 0-1.6-.2L2.9 11.4a1.4 1.4 0 0 0 .1 2.7l4.3 1.4 1.6 5a1.2 1.2 0 0 0 2 .5l2.4-2.5 4.7 3.4a1.5 1.5 0 0 0 2.3-.9l2.9-14.8a1.5 1.5 0 0 0-1.3-1.5z"/></symbol>
+    <symbol id="ic-star" viewBox="0 0 24 24"><path d="M12 2l3 6.3 6.9 1-5 4.8 1.2 6.9L12 17.8 5.9 21l1.2-6.9-5-4.8 6.9-1z"/></symbol>
+    <symbol id="ic-menu" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></symbol>
+    <symbol id="ic-copy" viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></symbol>
+  </svg>
 
-  <!-- ==================== Ambient Glassmorphism Background Glows ==================== -->
-  <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none" aria-hidden="true">
-    <div class="absolute -top-32 right-1/4 w-72 h-72 sm:w-[460px] sm:h-[460px] bg-tgBlue/15 rounded-full blur-[120px]"></div>
-    <div class="absolute top-1/3 -left-24 w-72 h-72 sm:w-[420px] sm:h-[420px] bg-purple-600/15 rounded-full blur-[125px]"></div>
-    <div class="absolute bottom-10 right-1/3 w-72 h-72 sm:w-[400px] sm:h-[400px] bg-pubgGold/10 rounded-full blur-[130px]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:28px_28px]"></div>
-  </div>
-
-  <!-- ==================== 1. Sticky Glass Navbar ==================== -->
-  <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-nexBg/80 border-b border-white/[0.08]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="flex items-center justify-between h-16 sm:h-20 gap-3">
-        <!-- Brand Logo & Title -->
-        <a href="#" class="flex items-center gap-2.5 group focus:outline-none shrink-0">
-          <div class="flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br from-tgBlue/25 via-purple-500/25 to-pink-500/25 border border-tgBlue/40 shadow-tg-glow transition-transform duration-300 group-hover:scale-105">
-            <svg class="w-5 h-5 text-tgBlue" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2l2.92 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.08-1.01L12 2z" />
-            </svg>
-          </div>
-          <div class="flex flex-col leading-tight">
-            <span class="text-base sm:text-xl font-black tracking-tight text-white">
-              نکسیفای <span class="text-tgBlue font-extrabold">| Nexify</span>
-            </span>
-            <span class="text-[11px] font-medium text-slate-400">فروشگاه دیجیتال افغانستان</span>
+  <!-- ۱. هدر ثابت -->
+  <header>
+    <div class="container">
+      <div class="nav-bar">
+        <a href="#" class="brand">
+          <div class="brand-icon"><svg class="ic"><use href="#ic-star"/></svg></div>
+          <div>
+            <div class="brand-title">نکسیفای <span>| Nexify</span></div>
+            <span class="brand-sub">فروشگاه دیجیتال افغانستان</span>
           </div>
         </a>
-
-        <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center gap-1" aria-label="منوی اصلی">
-          <a href="#products" class="px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white rounded-xl hover:bg-white/5 transition-colors">محصولات</a>
-          <a href="#how-to-order" class="px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white rounded-xl hover:bg-white/5 transition-colors">راهنمای خرید</a>
-          <a href="#faq" class="px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white rounded-xl hover:bg-white/5 transition-colors">سوالات متداول</a>
+        <nav class="nav-links" aria-label="منو">
+          <a href="#products">محصولات</a>
+          <a href="#steps">راهنمای خرید</a>
+          <a href="#contact">ارتباط با ما</a>
         </nav>
-
-        <!-- Header Action Buttons -->
-        <div class="flex items-center gap-2">
-          <!-- Primary WhatsApp Support Button (WhatsApp Only) -->
-          <a
-            data-link="whatsapp"
-            href="https://wa.me/93787861544"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2.5 text-xs sm:text-sm font-extrabold text-slate-950 rounded-xl bg-gradient-to-l from-emerald-400 to-waGreen hover:from-emerald-300 hover:to-emerald-400 shadow-wa-glow transition-all active:scale-95"
-          >
-            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.3-1.96 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.18-4.94-4.38-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.01-2.42c.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.24.58.83 2.02.9 2.17.07.14.12.31.02.5-.1.2-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.26 1.63 2.04 1.12 1 2.07 1.31 2.36 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.14.48.22.56.34.07.12.07.7-.17 1.38z"/>
-            </svg>
+        <div class="nav-actions">
+          <a data-wa-link href="https://wa.me/93787861544" target="_blank" rel="noopener noreferrer" class="btn btn-wa btn-sm">
+            <svg class="ic"><use href="#ic-wa"/></svg>
             <span>پشتیبانی واتساپ</span>
           </a>
-
-          <!-- Mobile Menu Button -->
-          <button
-            id="mobileMenuBtn"
-            type="button"
-            aria-label="باز کردن منو"
-            aria-expanded="false"
-            class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 transition-colors"
-          >
-            <svg id="menuIconOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg id="menuIconClose" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+          <button id="menuBtn" type="button" class="menu-btn" aria-label="منو">
+            <svg class="ic"><use href="#ic-menu"/></svg>
           </button>
         </div>
       </div>
-
-      <!-- Mobile Dropdown Navigation -->
-      <div id="mobileMenu" class="hidden md:hidden pb-4 pt-2 border-t border-white/[0.08]">
-        <nav class="flex flex-col gap-1">
-          <a href="#products" class="mobile-nav-link px-3 py-3 text-sm font-semibold text-slate-200 hover:bg-white/5 rounded-xl transition-colors">محصولات و قیمت افغانی</a>
-          <a href="#how-to-order" class="mobile-nav-link px-3 py-3 text-sm font-semibold text-slate-200 hover:bg-white/5 rounded-xl transition-colors">راهنمای خرید</a>
-          <a href="#faq" class="mobile-nav-link px-3 py-3 text-sm font-semibold text-slate-200 hover:bg-white/5 rounded-xl transition-colors">سوالات متداول</a>
-        </nav>
-        <div class="mt-3 pt-3 border-t border-white/[0.06] grid grid-cols-2 gap-2">
-          <a
-            data-link="telegramSupport"
-            href="https://t.me/Nexify_Telegram"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-tgBlue/15 border border-tgBlue/30 text-sky-300 text-xs font-bold"
-          >
-            <span>پشتیبانی تلگرام</span>
-          </a>
-          <a
-            data-link="telegramChannel"
-            href="https://t.me/Afgan_Stars_2026"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-purple-500/15 border border-purple-400/30 text-purple-200 text-xs font-bold"
-          >
-            <span>کانال رسمی</span>
-          </a>
-        </div>
+      <div id="mobileMenu" class="mobile-menu">
+        <a href="#products" class="m-link">محصولات و قیمت افغانی</a>
+        <a href="#steps" class="m-link">چطور سفارش بدهم؟</a>
+        <a href="#contact" class="m-link">پشتیبانی واتساپ و تلگرام</a>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- ==================== 2. Hero Section ==================== -->
-    <section class="relative pt-10 pb-12 sm:pt-16 sm:pb-18 px-4 sm:px-6">
-      <div class="max-w-5xl mx-auto text-center">
-        <!-- Live Afghani Store Pill -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-white/[0.04] border border-white/15 backdrop-blur-md text-xs sm:text-sm font-bold text-sky-200 animate-fade-up">
-          <span class="w-2 h-2 rounded-full bg-waGreen animate-pulse"></span>
-          <span>فروشگاه معتبر دیجیتال در افغانستان • قیمت‌های شفاف به افغانی</span>
+  <main class="container">
+    <!-- ۲. بخش معرفی -->
+    <section class="hero">
+      <div class="pill"><span class="dot"></span> قیمت‌گذاری شفاف به افغانی • تحویل سریع و مطمئن</div>
+      <h1>خرید فوری <span class="c-cyan">استارز تلگرام</span>، <span class="c-purp">پریمیوم</span> و <span class="c-gold">یوسی پابجی</span> در افغانستان</h1>
+      <p>تمامی بسته‌ها با قیمت واقعی <strong>افغانی</strong>، تحویل فوری بدون نیاز به رمز عبور و ثبت سفارش مستقیم از طریق واتساپ و تلگرام.</p>
+      <div class="hero-cta">
+        <a href="#products" class="btn btn-cyan">مشاهده بسته‌ها</a>
+        <a data-wa-link href="https://wa.me/93787861544" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
+          <svg class="ic"><use href="#ic-wa"/></svg>
+          <span>سفارش در واتساپ</span>
+        </a>
+      </div>
+      <div class="wa-notice">
+        <strong class="ltr" data-text="waDisplay">0787861544</strong>
+        <span>|</span>
+        <span>فقط پیام در واتساپ — بدون تماس و پیامک</span>
+      </div>
+    </section>
+
+    <!-- ۳. بخش محصولات -->
+    <section id="products">
+      <div class="sec-head">
+        <h2>محصولات فروشگاه نکسیفای</h2>
+        <p>بسته دلخواه خود را انتخاب کنید و روی دکمه «سفارش فوری» بزنید.</p>
+      </div>
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" data-cat="all">همه محصولات</button>
+        <button type="button" class="tab" data-cat="stars">⭐ استارز تلگرام</button>
+        <button type="button" class="tab" data-cat="premium">💎 تلگرام پریمیوم</button>
+        <button type="button" class="tab" data-cat="pubg">🎮 یوسی پابجی</button>
+      </div>
+      <div id="productGrid" class="grid"></div>
+    </section>
+
+    <!-- ۴. راهنمای خرید ۳ مرحله‌ای -->
+    <section id="steps">
+      <div class="sec-head">
+        <h2>چطور سفارش بدهم؟</h2>
+        <p>در ۳ قدم ساده و کمتر از یک دقیقه سفارشتان ثبت می‌شود</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">۱</div>
+          <h3>انتخاب بسته</h3>
+          <p>بسته استارز تلگرام، پریمیوم یا یوسی پابجی مورد نظر خود را با قیمت افغانی انتخاب کرده و «سفارش فوری» را بزنید.</p>
         </div>
-
-        <!-- Catchy Persian Headline -->
-        <h1 class="text-3xl sm:text-5xl lg:text-[3.4rem] font-black text-white leading-[1.4] sm:leading-[1.28] tracking-tight mb-5 animate-fade-up">
-          خرید سریع و مطمئن
-          <span class="text-tgBlue">استارز تلگرام</span>،
-          <span class="bg-gradient-to-l from-purple-400 via-pink-400 to-fuchsia-400 bg-clip-text text-transparent">پریمیوم</span>
-          و
-          <span class="text-pubgGold">یوسی پابجی</span>
-          در افغانستان
-        </h1>
-
-        <!-- Subheadline -->
-        <p class="max-w-2xl mx-auto text-sm sm:text-lg text-slate-400 leading-relaxed mb-7 animate-fade-up">
-          تحویل فوری در چند دقیقه بدون نیاز به رمز عبور، تمامی قیمت‌ها به <strong class="text-slate-100">افغانی</strong> و ثبت سفارش فوق‌العاده آسان از طریق <strong class="text-emerald-400">واتساپ</strong> و <strong class="text-tgBlue">تلگرام</strong>.
-        </p>
-
-        <!-- Primary CTA Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 animate-fade-up">
-          <a
-            href="#products"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-sm sm:text-base font-extrabold text-slate-950 rounded-2xl bg-gradient-to-l from-sky-300 to-tgBlue hover:from-sky-200 hover:to-sky-400 shadow-tg-glow transition-all active:scale-95"
-          >
-            <span>مشاهده بسته‌ها و قیمت افغانی</span>
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </a>
-          <a
-            data-link="whatsapp"
-            href="https://wa.me/93787861544"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 text-sm sm:text-base font-extrabold text-slate-950 rounded-2xl bg-gradient-to-l from-emerald-400 to-waGreen hover:from-emerald-300 hover:to-emerald-400 shadow-wa-glow transition-all active:scale-95"
-          >
-            <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.3-1.96 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.18-4.94-4.38-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.01-2.42c.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.24.58.83 2.02.9 2.17.07.14.12.31.02.5-.1.2-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.26 1.63 2.04 1.12 1 2.07 1.31 2.36 1.46.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.2-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.14.48.22.56.34.07.12.07.7-.17 1.38z"/>
-            </svg>
-            <span>سفارش سریع در واتساپ</span>
-          </a>
+        <div class="step-card">
+          <div class="step-num">۲</div>
+          <h3>ثبت آیدی/UID در فرم</h3>
+          <p>آیدی تلگرام یا آیدی عددی اکانت پابجی (UID) و شماره واتساپ خود را وارد کنید تا فاکتور سفارش آماده شود.</p>
         </div>
-
-        <!-- WhatsApp-Only Transparency Notice -->
-        <div class="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2.5 mb-9 rounded-2xl bg-waGreen/10 border border-waGreen/30 text-xs sm:text-sm text-emerald-200 animate-fade-up">
-          <span class="font-extrabold text-white tracking-wider" dir="ltr" data-text="whatsappDisplay">0787861544</span>
-          <span class="text-white/30">|</span>
-          <span class="font-bold text-emerald-300">فقط پیام در واتساپ — بدون تماس و پیامک</span>
-        </div>
-
-        <!-- 3 Trust Badges -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-4xl mx-auto">
-          <div class="flex items-center gap-3 p-4 rounded-2xl bg-nexSurface/75 backdrop-blur-xl border border-white/[0.08] text-right">
-            <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-pubgGold/15 border border-pubgGold/30 text-pubgGold shrink-0">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-sm font-extrabold text-white">تحویل فوری</p>
-              <p class="text-xs text-slate-400">واریز سریع ۵ تا ۱۵ دقیقه بدون رمز</p>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-4 rounded-2xl bg-nexSurface/75 backdrop-blur-xl border border-white/[0.08] text-right">
-            <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-tgBlue/15 border border-tgBlue/30 text-tgBlue shrink-0">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-sm font-extrabold text-white">پرداخت به افغانی (حساب پی و تتر)</p>
-              <p class="text-xs text-slate-400">راحت و مطمئن از سراسر افغانستان</p>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3 p-4 rounded-2xl bg-nexSurface/75 backdrop-blur-xl border border-white/[0.08] text-right">
-            <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-waGreen/15 border border-waGreen/30 text-waGreen shrink-0">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
-            </div>
-            <div>
-              <p class="text-sm font-extrabold text-white">پشتیبانی واتساپ و تلگرام</p>
-              <p class="text-xs text-slate-400">پاسخگویی مستقیم تا تحویل کامل</p>
-            </div>
-          </div>
+        <div class="step-card">
+          <div class="step-num">۳</div>
+          <h3>ارسال در واتساپ یا تلگرام و تحویل فوری</h3>
+          <p>سفارش را به واتساپ یا تلگرام پشتیبانی بفرستید؛ پس از تایید پرداخت، اکانت شما در چند دقیقه شارژ می‌شود.</p>
         </div>
       </div>
     </section>
 
-    <!-- ==================== 3. Interactive Product Catalog ==================== -->
-    <section id="products" class="py-10 sm:py-16 px-4 sm:px-6 scroll-mt-20">
-      <div class="max-w-6xl mx-auto">
-        <!-- Section Title -->
-        <div class="text-center mb-8">
-          <span class="inline-block px-3.5 py-1 mb-3 text-xs font-bold text-tgBlue bg-tgBlue/10 border border-tgBlue/25 rounded-full">لیست بسته‌ها به افغانی</span>
-          <h2 class="text-2xl sm:text-4xl font-black text-white mb-2.5">محصولات فروشگاه نکسیفای</h2>
-          <p class="text-sm sm:text-base text-slate-400 max-w-xl mx-auto">
-            بسته مورد نظر خود را انتخاب کنید و روی دکمه <strong class="text-slate-200">سفارش فوری</strong> کلیک نمایید.
-          </p>
-        </div>
-
-        <!-- Category Filter Tabs (4 Tabs) -->
-        <div class="flex justify-center mb-8">
-          <div
-            role="tablist"
-            aria-label="فیلتر دسته‌بندی محصولات"
-            class="grid grid-cols-2 sm:grid-cols-4 gap-2 p-2 rounded-2xl bg-nexSurface/90 border border-white/10 backdrop-blur-xl w-full max-w-3xl"
-          >
-            <button
-              type="button"
-              role="tab"
-              data-filter="all"
-              aria-selected="true"
-              class="filter-tab px-3 py-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-200 cursor-pointer"
-            >
-              همه محصولات
-            </button>
-            <button
-              type="button"
-              role="tab"
-              data-filter="stars"
-              aria-selected="false"
-              class="filter-tab px-3 py-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-200 cursor-pointer"
-            >
-              ⭐ استارز تلگرام
-            </button>
-            <button
-              type="button"
-              role="tab"
-              data-filter="premium"
-              aria-selected="false"
-              class="filter-tab px-3 py-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-200 cursor-pointer"
-            >
-              💎 تلگرام پریمیوم
-            </button>
-            <button
-              type="button"
-              role="tab"
-              data-filter="pubg"
-              aria-selected="false"
-              class="filter-tab px-3 py-3 rounded-xl text-xs sm:text-sm font-extrabold transition-all duration-200 cursor-pointer"
-            >
-              🎮 یوسی پابجی
-            </button>
-          </div>
-        </div>
-
-        <!-- Dynamic Product Cards Grid -->
-        <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-          <!-- Cards rendered dynamically from PRODUCTS_DATA -->
-        </div>
+    <!-- ۵. کارت‌های ارتباطی و اعتماد -->
+    <section id="contact">
+      <div class="sec-head">
+        <h2>راه‌های ارتباطی و کانال رسمی</h2>
+        <p>پاسخگویی سریع و مستقیم در واتساپ و تلگرام</p>
       </div>
-    </section>
-
-    <!-- ==================== 4. How to Order (3 Simple Steps) ==================== -->
-    <section id="how-to-order" class="py-12 sm:py-16 px-4 sm:px-6 scroll-mt-20">
-      <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-10">
-          <span class="inline-block px-3.5 py-1 mb-3 text-xs font-bold text-purple-300 bg-purple-500/15 border border-purple-400/25 rounded-full">راهنمای خرید</span>
-          <h2 class="text-2xl sm:text-3xl font-black text-white mb-2">چطور در ۳ قدم ساده سفارش بدهم؟</h2>
-          <p class="text-sm sm:text-base text-slate-400">فرآیند ثبت سفارش کمتر از یک دقیقه زمان می‌برد</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <!-- Step 1 -->
-          <div class="p-6 rounded-3xl bg-nexSurface/75 backdrop-blur-xl border border-white/[0.08] hover:border-tgBlue/40 transition-all">
-            <div class="flex items-center justify-between mb-4">
-              <span class="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-tgBlue/15 border border-tgBlue/30 text-tgBlue font-black text-lg">۱</span>
-              <span class="text-xs font-semibold text-slate-500">قدم اول</span>
+      <div class="contact-grid">
+        <a data-wa-link href="https://wa.me/93787861544" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-row">
+            <div class="c-icon c-wa"><svg class="ic"><use href="#ic-wa"/></svg></div>
+            <div>
+              <div class="contact-label">واتساپ فروشگاه</div>
+              <div class="contact-val ltr" data-text="waDisplay">0787861544</div>
             </div>
-            <h3 class="text-base sm:text-lg font-extrabold text-white mb-2">انتخاب بسته</h3>
-            <p class="text-sm text-slate-400 leading-relaxed">
-              از بخش محصولات، بسته دلخواه استارز تلگرام، اشتراک پریمیوم یا یوسی پابجی را با قیمت افغانی انتخاب کرده و روی دکمه «سفارش فوری» بزنید.
-            </p>
           </div>
-
-          <!-- Step 2 -->
- 
+          <div class="contact-tag wa-only">فقط پیام در واتساپ — بدون تماس و پیامک</div>
+        </a>
+        <a data-tg-link href="https://t.me/Nexify_Telegram" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-row">
+            <div class="c-icon c-t
